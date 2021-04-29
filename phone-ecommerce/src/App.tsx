@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Cart from './components/Cart';
@@ -8,13 +9,23 @@ import ProductList from './components/ProductList';
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Navbar />
-      <ProductList />
-      <Details />
-      <Cart />
-      <Default />
-    </>
+      <Switch>
+        <Route path="/details">
+          <Details />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/" exact>
+          <ProductList />
+        </Route>
+        <Route path="*">
+          <Default />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
