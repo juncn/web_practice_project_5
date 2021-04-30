@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Product as ProductType } from '../type';
+import { useAppDispatch } from '../hooks';
+import { addToCart } from '../productsSlice';
 
 interface Props {
   product: ProductType;
 }
 
 const Product = ({ product }: Props) => {
-  const { title, img, price, inCart } = product;
+  const { id, title, img, price, inCart } = product;
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    dispatch(addToCart(id));
+  };
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -22,10 +30,16 @@ const Product = ({ product }: Props) => {
           <button
             className="cart-btn"
             disabled={inCart}
-            onClick={() => console.log('item added to cart')}
+            onClick={e => handleAddToCart(e)}
           >
             {inCart ? (
-              <p className="text-capitalize mb-0">in cart</p>
+              <p
+                className={`text-capitalize mb-0 ${
+                  inCart ? 'btn-disabled' : ''
+                }`}
+              >
+                in cart
+              </p>
             ) : (
               <i className="fas fa-cart-plus" />
             )}
@@ -101,6 +115,10 @@ const ProductWrapper = styled.div`
       color: var(--mainBlue);
       cursor: pointer;
     }
+  }
+
+  .btn-disabled {
+    pointer-events: none;
   }
 `;
 
