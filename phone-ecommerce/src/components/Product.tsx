@@ -24,7 +24,7 @@ const Product = ({ product }: Props) => {
           className="img-container p-5"
           onClick={() => console.log('product clicked')}
         >
-          <Link to="/details">
+          <Link to={`/details/${id}`}>
             <img src={img} alt="product" className="card-img-top" />
           </Link>
           <button
