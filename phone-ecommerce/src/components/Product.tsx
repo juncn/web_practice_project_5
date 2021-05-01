@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Product as ProductType } from '../type';
 import { useAppDispatch } from '../hooks';
+import { toggleModal } from '../modalSlice';
 import { addToCart } from '../productsSlice';
 
 interface Props {
@@ -12,9 +13,10 @@ const Product = ({ product }: Props) => {
   const { id, title, img, price, inCart } = product;
   const dispatch = useAppDispatch();
 
-  const handleAddToCart = () => {
+  const handleCartBtnClick = () => {
     dispatch(addToCart(id));
-  };
+    dispatch(toggleModal());
+  }
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -26,7 +28,7 @@ const Product = ({ product }: Props) => {
           <button
             className="cart-btn"
             disabled={inCart}
-            onClick={handleAddToCart}
+            onClick={handleCartBtnClick}
           >
             {inCart ? (
               <p
