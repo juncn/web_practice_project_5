@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Product as ProductType } from '../type';
 import { useAppDispatch } from '../hooks';
-import { toggleModal } from '../modalSlice';
+import { openModal } from '../modalSlice';
 import { addToCart } from '../productsSlice';
 
 interface Props {
@@ -15,7 +15,7 @@ const Product = ({ product }: Props) => {
 
   const handleCartBtnClick = () => {
     dispatch(addToCart(id));
-    dispatch(toggleModal());
+    dispatch(openModal(id));
   }
 
   return (
