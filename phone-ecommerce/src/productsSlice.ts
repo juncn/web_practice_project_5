@@ -5,10 +5,12 @@ export const productsReducer = createSlice({
   name: 'products',
   initialState: storeProducts,
   reducers: {
-    addToCart: (state, action: PayloadAction<Number>) => {
+    addToCart: (state, action: PayloadAction<number>) => {
       const product = state.find(el => el.id === action.payload);
       if (product) {
         product.inCart = true;
+        product.count = 1;
+        product.total = product.price;
       }
     }
   }

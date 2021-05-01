@@ -16,7 +16,7 @@ const Details = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(parseInt(id)));
-  }
+  };
 
   if (product) {
     const { title, img, company, price, info, inCart } = product;
@@ -54,7 +54,11 @@ const Details = () => {
               <Link to="/">
                 <ButtonContainer>back to products</ButtonContainer>
               </Link>
-              <ButtonContainer disabled={inCart} onClick={handleAddToCart} isInCart={inCart}>
+              <ButtonContainer
+                disabled={inCart}
+                onClick={handleAddToCart}
+                isInCart={inCart}
+              >
                 {inCart ? 'in cart' : 'add to cart'}
               </ButtonContainer>
             </div>

@@ -12,25 +12,21 @@ const Product = ({ product }: Props) => {
   const { id, title, img, price, inCart } = product;
   const dispatch = useAppDispatch();
 
-  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleAddToCart = () => {
     dispatch(addToCart(id));
   };
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
-        <div
-          className="img-container p-5"
-          onClick={() => console.log('product clicked')}
-        >
+        <div className="img-container p-5">
           <Link to={`/details/${id}`}>
             <img src={img} alt="product" className="card-img-top" />
           </Link>
           <button
             className="cart-btn"
             disabled={inCart}
-            onClick={e => handleAddToCart(e)}
+            onClick={handleAddToCart}
           >
             {inCart ? (
               <p
