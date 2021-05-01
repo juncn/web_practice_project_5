@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Product as ProductType } from '../type';
 import { useAppDispatch } from '../hooks';
-import { openModal } from '../modalSlice';
-import { addToCart } from '../productsSlice';
+import { openModal } from '../features/modalSlice';
+import { addToCart } from '../features/productsSlice';
 
 interface Props {
   product: ProductType;

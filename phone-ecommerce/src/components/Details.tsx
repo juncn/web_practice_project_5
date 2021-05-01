@@ -2,7 +2,7 @@ import { useAppSelector } from '../hooks';
 import { Link, useParams } from 'react-router-dom';
 import { ButtonContainer } from './Button';
 import { useAppDispatch } from '../hooks';
-import { addToCart } from '../productsSlice';
+import { addToCart } from '../features/productsSlice';
 
 interface ParamsType {
   id: string;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Product } from '../type';
 import { ButtonContainer } from './Button';
-import { closeModal } from '../modalSlice';
+import { closeModal } from '../features/modalSlice';
 import { useAppDispatch } from '../hooks';
 
 interface Props {

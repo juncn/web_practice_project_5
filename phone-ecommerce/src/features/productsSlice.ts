@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { storeProducts } from './data';
+import { storeProducts } from '../data';
 
 export const productsReducer = createSlice({
   name: 'products',
