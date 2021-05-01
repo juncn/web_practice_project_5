@@ -12,9 +12,18 @@ export const productsReducer = createSlice({
         product.count = 1;
         product.total = product.price;
       }
+    },
+    increment: (state, action: PayloadAction<number>) => {
+      console.log('increment is called');
+    },
+    decrement: (state, action: PayloadAction<number>) => {
+      console.log('decrement is called');
+    },
+    clearCart: state => {
+      console.log('clearCart is called');
     }
   }
 });
 
-export const { addToCart } = productsReducer.actions;
+export const { addToCart, increment, decrement, clearCart } = productsReducer.actions;
 export default productsReducer.reducer;
