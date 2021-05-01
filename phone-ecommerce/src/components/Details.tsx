@@ -54,7 +54,7 @@ const Details = () => {
               <Link to="/">
                 <ButtonContainer>back to products</ButtonContainer>
               </Link>
-              <ButtonContainer disabled={inCart} onClick={handleAddToCart}>
+              <ButtonContainer disabled={inCart} onClick={handleAddToCart} isInCart={inCart}>
                 {inCart ? 'in cart' : 'add to cart'}
               </ButtonContainer>
             </div>
