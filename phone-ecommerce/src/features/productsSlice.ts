@@ -14,10 +14,13 @@ export const productsReducer = createSlice({
       }
     },
     increment: (state, action: PayloadAction<number>) => {
-      console.log('increment is called');
+      console.log('increment is called with ' + action.payload);
     },
     decrement: (state, action: PayloadAction<number>) => {
-      console.log('decrement is called');
+      console.log('decrement is called with ' + action.payload);
+    },
+    removeItem: (state, action: PayloadAction<number>) => {
+      console.log('removeItem is called with ' + action.payload);
     },
     clearCart: state => {
       console.log('clearCart is called');
@@ -25,5 +28,5 @@ export const productsReducer = createSlice({
   }
 });
 
-export const { addToCart, increment, decrement, clearCart } = productsReducer.actions;
+export const { addToCart, increment, decrement, clearCart, removeItem } = productsReducer.actions;
 export default productsReducer.reducer;
