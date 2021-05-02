@@ -14,16 +14,40 @@ export const productsReducer = createSlice({
       }
     },
     increment: (state, action: PayloadAction<number>) => {
-      console.log('increment is called with ' + action.payload);
+      const product = state.find(el => el.id === action.payload);
+      if (product) {
+        product.count += 1;
+        product.total = product.price * product.count;
+      }
     },
     decrement: (state, action: PayloadAction<number>) => {
-      console.log('decrement is called with ' + action.payload);
+      const product = state.find(el => el.id === action.payload);
+      if (product) {
+        product.count -= 1;
+        if (product.count === 0) {
+          product.inCart = false;
+          product.total = 0;
+        } else {
+          product.total = product.price * product.count;
+        }
+      }
     },
     removeItem: (state, action: PayloadAction<number>) => {
-      console.log('removeItem is called with ' + action.payload);
+      const product = state.find(el => el.id === action.payload);
+      if (product) {
+        product.count = 0;
+        product.total = 0;
+        product.inCart = false;
+      }
     },
     clearCart: state => {
-      console.log('clearCart is called');
+      state.forEach(item => {
+        if (item.inCart) {
+          item.inCart = false;
+          item.count = 0;
+          item.total = 0;
+        }
+      });
     }
   }
 });
