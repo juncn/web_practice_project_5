@@ -1,10 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { storeProducts } from '../data';
+import { Product } from '../type';
+
+const localProducts = localStorage.getItem('products') || '[]';
+const initialState: Product[] = JSON.parse(localProducts);
 
 export const productsReducer = createSlice({
   name: 'products',
-  initialState: storeProducts,
+  initialState,
   reducers: {
+    setProducts: (state, action: PayloadAction<Product[]>) => {
+      return action.payload;
+    },
     addToCart: (state, action: PayloadAction<number>) => {
       const product = state.find(el => el.id === action.payload);
       if (product) {
@@ -52,5 +58,5 @@ export const productsReducer = createSlice({
   }
 });
 
-export const { addToCart, increment, decrement, clearCart, removeItem } = productsReducer.actions;
+export const { setProducts, addToCart, increment, decrement, clearCart, removeItem } = productsReducer.actions;
 export default productsReducer.reducer;
