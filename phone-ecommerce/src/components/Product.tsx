@@ -10,13 +10,33 @@ interface Props {
 }
 
 const Product = ({ product }: Props) => {
-  const { id, title, img, price, inCart } = product;
+  const { id, title, img, price, inCart, stockCount } = product;
   const dispatch = useAppDispatch();
 
   const handleCartBtnClick = () => {
     dispatch(addToCart(id));
     dispatch(openModal(id));
-  }
+  };
+
+  const renderCartBtnContent = () => {
+    if (stockCount > 0) {
+      if (inCart) {
+        return (
+          <p className={`text-capitalize mb-0 ${inCart ? 'btn-disabled' : ''}`}>
+            in cart
+          </p>
+        );
+      } else {
+        return <i className="fas fa-cart-plus" />;
+      }
+    } else {
+      return (
+        <p className={`text-capitalize mb-0 ${stockCount > 0 ? 'btn-disabled' : ''}`}>
+          out of stock
+        </p>
+      );
+    }
+  };
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -27,20 +47,10 @@ const Product = ({ product }: Props) => {
           </Link>
           <button
             className="cart-btn"
-            disabled={inCart}
+            disabled={inCart || stockCount < 1}
             onClick={handleCartBtnClick}
           >
-            {inCart ? (
-              <p
-                className={`text-capitalize mb-0 ${
-                  inCart ? 'btn-disabled' : ''
-                }`}
-              >
-                in cart
-              </p>
-            ) : (
-              <i className="fas fa-cart-plus" />
-            )}
+            {renderCartBtnContent()}
           </button>
         </div>
         {/* card footer */}

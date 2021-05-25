@@ -19,7 +19,14 @@ const Details = () => {
   };
 
   if (product) {
-    const { title, img, company, price, info, inCart } = product;
+    const { title, img, company, price, info, inCart, stockCount } = product;
+    const renderBtnContent = () => {
+      if (stockCount > 0) {
+        return inCart ? 'in cart' : 'add to cart';
+      } else {
+        return 'out of stock';
+      }
+    }
 
     return (
       <div className="container py-5">
@@ -55,11 +62,11 @@ const Details = () => {
                 <ButtonContainer>back to products</ButtonContainer>
               </Link>
               <ButtonContainer
-                disabled={inCart}
+                disabled={inCart || stockCount < 1}
                 onClick={handleAddToCart}
                 isInCart={inCart}
               >
-                {inCart ? 'in cart' : 'add to cart'}
+                {renderBtnContent()}
               </ButtonContainer>
             </div>
             {/* end buttons */}
