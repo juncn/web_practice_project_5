@@ -8,6 +8,7 @@ interface Product {
   inCart: boolean;
   count: number;
   total: number;
+  stockCount: number;
 }
 
 export type { Product }

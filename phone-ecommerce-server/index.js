@@ -15,7 +15,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 0
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 6,
@@ -80,7 +80,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 7,
@@ -93,7 +93,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   },
   {
     id: 8,
@@ -106,7 +106,7 @@ const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    inStockCount: 10
+    stockCount: 10
   }
 ];
 
